@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssessmentComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
   public today;
   public h = 3;
   public m = 0;
@@ -15,6 +15,9 @@ export class AssessmentComponent implements OnInit {
   public hh;
   public mm;
   public ss;
+  public hr;
+  public min;
+  public sec;
   public t;
   public count = 1;
   public combined; 
@@ -23,29 +26,33 @@ export class AssessmentComponent implements OnInit {
   	 choices:[
   	 'choice1','choice2', 'choice3'
   	],
-  	 timeout: '2:00'
+  	 timeout: '2:00',
+     timetaken:''
   },{
   	 question: 'question 2',
   	choices:[
   	 'choice1','choice2', 'choice3'
   	],
-  	 timeout: '3:00'
+  	 timeout: '3:00',
+     timetaken:''
   },{
   	 question: 'question 3',
   	 choices:[
   	 'choice1','choice2', 'choice3'
   	],
-  	 timeout: '1:00'
+  	 timeout: '1:00',
+     timetaken:''
   },{
   	 question: 'question 4',
   	choices:[
   	 'choice1','choice2', 'choice3'
   	],
-  	 timeout: '4:00'
+  	 timeout: '4:00',
+     timetaken:''
   }]
 
   ngOnInit() {
-  	//this.startTime();
+  	this.startTime();
   	this.startTimer();
   	this.startQuestionTimer(0,this.datas[0].timeout);
   }
@@ -56,24 +63,31 @@ export class AssessmentComponent implements OnInit {
   return i;
 }
 
+  
+
 startTime(): void {
   this.today = new Date();
-  this.h = this.today.getHours();
-  this.m = this.today.getMinutes();
-  this.s = this.today.getSeconds();
-  // add a zero in front of numbers<10
+  this.hr = this.today.getHours();
+  this.min = this.today.getMinutes();
+  this.sec = this.today.getSeconds();
+  this.min = this.checkTime(this.min);
+  this.sec = this.checkTime(this.sec);
+  console.log(this.hr+':'+this.min+':'+this.sec);
   
-  this.m = this.checkTime(this.m);
-  this.s = this.checkTime(this.s);
-
-  this.t = setTimeout(()=>{    //<<<---    using ()=> syntax
-     // this.startTime()
-     this.today = new Date();
-     this.hh =  this.today.getHours() - this.h;
-  this.mm= this.today.getMinutes() - this.m ;
-  this.ss = this.today.getSeconds() - this.s ;
- },50000);
 };
+
+calcTime(i): void { 
+  console.log(this.hr+':'+this.min+':'+this.sec);
+  this.today = new Date();  
+  console.log(this.today.getHours()+':'+this.today.getMinutes()+':'+this.today.getSeconds());
+  this.hr =  Math.abs(this.today.getHours() - this.hr);
+  this.min = Math.abs(this.today.getMinutes() - this.min);
+  this.sec = Math.abs(this.today.getSeconds() - this.sec);
+  console.log(this.hr+':'+this.min+':'+this.sec);
+  this.datas[i].timetaken = this.hr+':'+this.min+':'+this.sec;
+  this.startTime()
+  console.log(this.datas);
+}
 
 
 startTimer(): void {
@@ -107,15 +121,17 @@ checkSecond(sec):void {
 
 increaseCount():void {
 	if(this.count != this.datas.length){
-		this.count = this.count+1;
-		console.log(this.datas[this.count-1]);
+    this.calcTime(this.count-1);
+		this.count = this.count+1;    
 		this.startQuestionTimer(this.count-1,this.datas[this.count-1].timeout)
 	}
+  else{
+    this.calcTime(this.count-1);
+  }
 	
 }
 
 startQuestionTimer(qsn,data): void {
-	console.log(data);
 	let array = data.split(/[:]+/);
 	let m = array[0];
 	let s = array[1];
@@ -132,7 +148,7 @@ startQuestionTimer(qsn,data): void {
  if(qsn+1== this.count){
  	setTimeout(()=>{
   	this.startQuestionTimer(qsn,this.combined);
-  }, 100);
+  }, 1000);
  }
 
   
