@@ -19,9 +19,20 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "assets/css/vendor.min.css",
+        "assets/css/theme-core.min.css","assets/css/module-essentials.min.css","assets/css/module-material.min.css",
+        "assets/css/module-layout.min.css","assets/css/module-sidebar.min.css","assets/css/module-sidebar-skins.min.css",
+        "assets/css/module-navbar.min.css","assets/css/module-messages.min.css","assets/css/module-carousel-slick.min.css",
+        "assets/css/module-charts.min.css","assets/css/module-maps.min.css","assets/css/module-colors-alerts.min.css",
+        "assets/css/module-colors-background.min.css","assets/css/module-colors-buttons.min.css","assets/css/module-colors-text.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/vendor-core.min.js","assets/js/vendor-countdown.min.js","assets/js/vendor-tables.min.js","assets/js/vendor-forms.min.js","assets/js/vendor-carousel-slick.min.js",
+        "assets/js/vendor-player.min.js","assets/js/vendor-charts-flot.min.js","assets/js/vendor-nestable.min.js","assets/js/module-essentials.min.js","assets/js/module-material.min.js","assets/js/module-layout.min.js",
+        "assets/js/module-sidebar.min.js","assets/js/module-carousel-slick.min.js","assets/js/module-player.min.js","assets/js/module-messages.min.js",
+        "assets/js/module-charts-flot.min.js"
+       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

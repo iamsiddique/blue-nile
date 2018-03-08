@@ -1,0 +1,96 @@
+<app-header></app-header>
+<div class="split-vertical">
+        <div class="page-section half bg-white">
+            <div class="container">
+                <div class="section-toolbar">
+                    <div class="cell">
+                        <div class="media width-120 v-middle margin-none">
+                            <div class="media-left">
+                                <div class="icon-block bg-grey-200 s30"><i class="fa fa-question"></i></div>
+                            </div>
+                            <div class="media-body">
+                                <p class="text-body-2 text-light margin-none">Questions</p>
+                                <p class="text-title text-primary margin-none">25</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="media width-120 v-middle margin-none">
+                            <div class="media-left">
+                                <div class="icon-block bg-grey-200 s30"><i class="fa fa-clock-o"></i></div>
+                            </div>
+                            <div class="media-body">
+                                <p class="text-body-2 text-light margin-none">Time</p>
+                                <p class="text-title text-success margin-none"> {{h}}:{{m}}:{{s}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+        <div class="split-vertical-body">
+            <div class="split-vertical-cell">
+                <div class="container height-100pc position-relative">
+                    <div class="page-section height-100pc">
+                        <div class="row height-100pc"  *ngFor="let data of datas; let i=index">
+                            <div class="col-md-9" *ngIf="i+1 == count">
+                            	
+                                <div  class="text-subhead-2 text-light">Question {{i+1}} of {{datas.length}}</div>
+                                <div class="panel panel-default paper-shadow" data-z="0.5">
+                                    <div class="panel-heading">
+                                        <h4 class="text-headline">Step by Step</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p class="text-body-2">{{data.question}}?</p>
+                                    </div>
+                                </div>
+                                <div class="text-subhead-2 text-light">Your Answer</div>
+                                <div class="panel panel-default paper-shadow" data-z="0.5">
+                                    <div class="panel-body">
+                                        <div class="checkbox checkbox-primary" *ngFor="let choice of data.choices">
+                                            <input id="checkbox1" type="checkbox">
+                                            <label for="checkbox1">{{choice}}</label>
+                                        </div>                                       
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="text-right">
+                                           
+                                            <button class="btn btn-primary" (click)="increaseCount()"><i class="fa fa-chevron-right fa-fw"></i> Next Question</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                            </div>
+                            <div class="col-md-3 height-100pc" *ngIf="i+1 == count">
+                                <div class="split-vertical">
+                                    <div class="s-container">
+                                        <div class="text-subhead-2 text-light">Time to complete</div>
+                                        <div class="tk-countdown is-countdown">
+                                        	<div class="countdown-row countdown-show3">
+                                        		<div class="countdown-section">
+                                        			<div class="countdown-amount">0</div>
+                                        			<div class="countdown-period">Hours</div>
+                                        		</div>
+                                        		<div class="countdown-section">
+                                        			<div class="countdown-amount">{{mm}}</div>
+                                        			<div class="countdown-period">Minutes</div>
+                                        		</div>
+                                        		<div class="countdown-section">
+                                        			<div class="countdown-amount">{{ss}}</div>
+                                        			<div class="countdown-period">Seconds</div>
+                                        		</div>
+                                        	</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
