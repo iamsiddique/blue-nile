@@ -49,11 +49,17 @@
                                 </div>
                                 <div class="text-subhead-2 text-light">Your Answer</div>
                                 <div class="panel panel-default paper-shadow" data-z="0.5">
-                                    <div class="panel-body">
+                                    <div class="panel-body" *ngIf="data.type === 'choose'">
                                         <div class="checkbox checkbox-primary" *ngFor="let choice of data.choices">
                                             <input id="checkbox1" type="checkbox">
                                             <label for="checkbox1">{{choice}}</label>
                                         </div>                                       
+                                    </div>
+                                    <div class="panel-body" *ngIf="data.type === 'input'">
+                                        <div class="form-control-material">
+                                                        <input type="email" class="form-control" id="exampleInputFirstName" placeholder="Your first name">
+                                                        <label for="exampleInputFirstName">First name</label>
+                                                    </div>                                       
                                     </div>
                                     <div class="panel-footer">
                                         <div class="text-right">

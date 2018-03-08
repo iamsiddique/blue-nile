@@ -21,35 +21,47 @@ export class AssessmentComponent implements OnInit {
   public t;
   public count = 1;
   public combined; 
+
   public datas = [{
   	 question: 'question 1',
   	 choices:[
   	 'choice1','choice2', 'choice3'
   	],
-  	 timeout: '2:00',
-     timetaken:''
+  	 timeout: '4:00',
+     timetaken:'',
+     type:'input'
   },{
   	 question: 'question 2',
   	choices:[
-  	 'choice1','choice2', 'choice3'
+  	 'choice4','choic5', 'choice6'
   	],
   	 timeout: '3:00',
-     timetaken:''
+     timetaken:'',
+     type:'choose'
   },{
   	 question: 'question 3',
   	 choices:[
   	 'choice1','choice2', 'choice3'
   	],
   	 timeout: '1:00',
-     timetaken:''
+     timetaken:'',
+     type:'choose'
   },{
   	 question: 'question 4',
   	choices:[
   	 'choice1','choice2', 'choice3'
   	],
   	 timeout: '4:00',
-     timetaken:''
-  }]
+     timetaken:'',
+     type:'choose'
+  },{
+     question: 'question 5',
+     choices:[],
+     timeout: '4:00',
+     timetaken:'',
+     type:'input'
+  }
+  ]
 
   ngOnInit() {
   	this.startTime();
